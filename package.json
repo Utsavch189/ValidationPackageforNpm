@@ -1,0 +1,23 @@
+{
+    "name": "validate-utsav",
+    "version": "1.0.0",
+    "description": "This can be helpful to validate a email and phone.",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Utsavch189/ValidationPackageforNpm.git"
+    },
+    "author": "Utsav",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Utsavch189/ValidationPackageforNpm/issues"
+    },
+    "homepage": "https://github.com/Utsavch189/ValidationPackageforNpm#readme",
+    "dependencies": {
+        "node-fetch": "^3.2.10"
+    }
+}

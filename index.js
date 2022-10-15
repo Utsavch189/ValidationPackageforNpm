@@ -1,14 +1,36 @@
+import fetch from "node-fetch";
+
 class ValidationProvider {
 
-    is_valid;
-    quality_score;
+    constructor(api_key) {
+        this.api_key = api_key
+    }
 
-    getEmailValidation(email) {
-        fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=c5c66b0590814f0991853d1d9f3fc183&email=${email}`)
-            .then(res => {
-                this.is_valid = res['data']['is_valid_format'].value;
-                this.quality_score = res['data']['quality_score']
-            })
-        return this.quality_score
+    getEmailValidation = async function(email) {
+
+        const data = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=${this.api_key}&email=${email}`)
+        const response = await data.json()
+
+        const datas = {
+            "is_valid": response.is_valid_format.value,
+            "quality_score": response.quality_score,
+            "deliverability": response.deliverability
+        }
+        console.log(datas)
+        return datas
+    }
+
+    getPhoneValidation = async function(number) {
+
+        const data = await fetch(`https://phonevalidation.abstractapi.com/v1/?api_key=f0c05605a996485d9945695d966acbe3&phone=${number}`)
+        const response = await data.json()
+
+        const datas = {
+            "is_valid": response.valid,
+            "provider": response.carrier,
+            "country": response.country.name
+        }
+        console.log(datas)
+        return datas
     }
 }
